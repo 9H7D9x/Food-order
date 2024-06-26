@@ -1,15 +1,16 @@
 import React from 'react'
 import logoImg from "../assets/logo.jpg"
+import Button from './UI/Button'
 
 const Header = () => {
   return (
     <header id="main-header">
         <div id="title">
-            <img src={logoImg} alt=" a resturtantImage"/>
+            <img src={logoImg} alt="A resturtant"/>
             <h1>SliceFood</h1>
         </div>
         <nav>
-        <button>Cart(0)</button>
+        <Button textOnly >Cart(0)</Button>
         </nav>
         
     </header>
