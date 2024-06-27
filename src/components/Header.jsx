@@ -7,7 +7,7 @@ import UserProgressContext from '../Store/UserProgressContext'
 
 const Header = () => {
     const cartCntx=useContext(CartContext);
-    const userProgressCntx =useContext(UserProgressContext);
+    const userProgressCtx =useContext(UserProgressContext);
 
     
     const totalCartItems= cartCntx.items.reduce((totalNumberItems ,item)=>{
@@ -15,7 +15,7 @@ const Header = () => {
     },0);
 
     const handleShowCart=()=>{
-        userProgressCntx.showCart();
+        userProgressCtx.showCart();
     }
 
   return (
