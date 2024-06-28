@@ -22,13 +22,32 @@ const CheckOut = () => {
     function handleGoToCheckOut(){
         userProgressCtx.showCheckout();
     }
+     function handleSubmit(event){
+        event.preventDefault();
 
+        const fd =new FormData(event.target);
+        const customerData = Object.fromEntries(fd.entries());
+
+        fetch('http://localhost:3000', {
+            method:'Post' ,
+            header:{
+                'content-type':'application/json'
+            },
+            body: Json.stringfy({
+                order:{
+                    items: cartCtx.items,
+                    customer:customerData
+                }
+            })
+
+        })
+     }
   return (
     <Modal open={userProgressCtx.progress==="checkout"} onClose={handleClose}>
-        <form>
+        <form onSubmit={handleSubmit}>
             <h2>CheckOut</h2>
             <p>TotalAmount:{currencyFormater.format(cartTotal)}</p>
-           <Input label="full Name" type='text' id="full-name"/>
+           <Input label="full Name" type='text' id="name"/>
            <Input label="E-Mail Address" type='text' id="email"/>
            <Input label="street" type='text' id="street"/>
            <div className='control-row'>
